@@ -1175,38 +1175,8 @@
       }
     }
 
-    function toggleAudio() {
-      const icon = document.getElementById('audio-icon');
-      
-      if (!audioPlaying) {
-        if (!audioContext) {
-          const AudioContext = window.AudioContext || window.webkitAudioContext;
-          audioContext = new AudioContext();
-        }
-        if (audioContext.state === 'suspended') {
-          audioContext.resume();
-        }
-
-        // Play gentle classical arpeggios
-        let noteIndex = 0;
-        const melody = [0, 2, 4, 7, 5, 4, 2, 0, 4, 7, 9, 7, 4, 2];
-        
-        audioInterval = setInterval(() => {
-          const freq = scale[melody[noteIndex % melody.length]];
-          playNote(freq, 1.8);
-          noteIndex++;
-        }, 1200);
-
-        audioPlaying = true;
-        icon.className = "fa-solid fa-volume-high text-gold-400";
-        showToast("Wedding music melody playing ♪");
-      } else {
-        clearInterval(audioInterval);
-        audioPlaying = false;
-        icon.className = "fa-solid fa-volume-xmark";
-        showToast("Audio muted");
-      }
-    }
+    
+       
 
     /* ==========================================
        4. CALENDAR EXPORT ENGINES (.ICS FILE GENERATORS)
